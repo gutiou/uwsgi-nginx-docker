@@ -5,9 +5,8 @@ LABEL maintainer="Bruce <Bruce.lin@plus.ai>"
 
 RUN apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
-    build-essential \
+    apt-utils build-essential \
     ca-certificates \
-    apt-utils \
     libpq-dev \
     python2.7 \
     python2.7-dev \
@@ -26,7 +25,7 @@ EXPOSE 80
 EXPOSE 443
 COPY uwsgi.ini /etc/uwsgi/
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-ENV UWSGI_INI /app/uwsgi.in
+ENV UWSGI_INI /app/uwsgi.ini
 ENV UWSGI_CHEAPER 2
 ENV UWSGI_PROCESSES 16
 ENV NGINX_MAX_UPLOAD 0
